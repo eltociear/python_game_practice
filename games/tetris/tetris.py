@@ -8,6 +8,10 @@ class Tetris:
         self.sprite_group = pg.sprite.Group()
         self.tetromino = Tetromino(self)
 
+    def check_tetromino_landing(self):
+        if self.tetromino.landing:
+            self.tetromino = Tetromino(self)
+
     def control(self, pressed_key):
         if pressed_key == pg.K_LEFT:
             self.tetromino.move(direction='left')
@@ -22,6 +26,7 @@ class Tetris:
     def update(self):
         if self.app.anim_trigger:
             self.tetromino.update()
+            self.check_tetromino_landing()
         self.sprite_group.update()
 
     def draw(self):
