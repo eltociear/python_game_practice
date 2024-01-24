@@ -6,10 +6,20 @@ class Tetris:
     def __init__(self, app):
         self.app = app
         self.sprite_group = pg.sprite.Group()
+        self.field_array = self.get_field_array()
         self.tetromino = Tetromino(self)
+    
+    def put_tetromino_blocks_in_array(self):
+        for block in self.tetromino.blocks:
+            x, y = int(block.pos.x), int(block.pos.y)
+            self.field_array[y][x] = block
+
+    def get_field_array(self):
+        return [[0 for x in range(FIELD_W)] for y in range(FIELD_H)]
 
     def check_tetromino_landing(self):
         if self.tetromino.landing:
+            self.put_tetromino_blocks_in_array()
             self.tetromino = Tetromino(self)
 
     def control(self, pressed_key):
