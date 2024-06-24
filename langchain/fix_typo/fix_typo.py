@@ -1,3 +1,5 @@
+# refs: https://zenn.dev/umi_mori/books/prompt-engineer/viewer/langchain_overview
+
 import os
 
 os.environ["OPENAI_API_KEY"] = "{YOUR_OPENAI_API_KEY}"
